@@ -27,6 +27,7 @@ class TodoeyViewController: SwipleTableViewController{
         let alert=UIAlertController(title: "Add an Item", message: "", preferredStyle: .alert)
         let action=UIAlertAction(title: "Add Item", style: .default) { (action) in
             if let currentCategory=self.selectedCategory{
+                if textField.text != "" {
                 do {
                     try self.realm.write{
                         let newItem=Item()
@@ -37,7 +38,13 @@ class TodoeyViewController: SwipleTableViewController{
                 } catch{
                     print("error Saving new data \(error)")
                 }
-            }
+                }else{
+                    let alert = UIAlertController(title: "Empty Field", message: "Please Enter details", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "Retry", style: .default, handler: nil)
+                    alert.addAction(action)
+                    self.present(alert, animated: true, completion: nil)
+                }
+        }
             self.tableView.reloadData()
         }
         

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		08886DD0ECCFF1AEDC851734 /* Pods_Todoey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 562617B45913E8B91160D2C4 /* Pods_Todoey.framework */; };
+		D529F69326A0A99700722EE6 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D529F69226A0A99700722EE6 /* Helper.swift */; };
 		D53C53152525A24B00DDA4EC /* SwipleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53C53142525A24B00DDA4EC /* SwipleTableViewController.swift */; };
 		D55052D724EE9B8F00585EA6 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55052D624EE9B8F00585EA6 /* Item.swift */; };
 		D55052D924EE9BA300585EA6 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55052D824EE9BA300585EA6 /* Category.swift */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		562617B45913E8B91160D2C4 /* Pods_Todoey.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Todoey.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86782A2ED0CF7971C43E90BF /* Pods-Todoey.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoey.release.xcconfig"; path = "Target Support Files/Pods-Todoey/Pods-Todoey.release.xcconfig"; sourceTree = "<group>"; };
+		D529F69226A0A99700722EE6 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		D53C53142525A24B00DDA4EC /* SwipleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipleTableViewController.swift; sourceTree = "<group>"; };
 		D55052D624EE9B8F00585EA6 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		D55052D824EE9BA300585EA6 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				EB2BE502239524DC00FB933B /* Assets.xcassets */,
 				EB2BE504239524DC00FB933B /* LaunchScreen.storyboard */,
 				EB2BE507239524DC00FB933B /* Info.plist */,
+				D529F69226A0A99700722EE6 /* Helper.swift */,
 			);
 			path = Todoey;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D55052D724EE9B8F00585EA6 /* Item.swift in Sources */,
+				D529F69326A0A99700722EE6 /* Helper.swift in Sources */,
 				D5A218DB24EC710D00F6CE32 /* CategoryViewController.swift in Sources */,
 				EB2BE4FE239524DB00FB933B /* TodoeyViewController.swift in Sources */,
 				EB2BE4FA239524DB00FB933B /* AppDelegate.swift in Sources */,
@@ -321,7 +325,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -376,7 +380,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
