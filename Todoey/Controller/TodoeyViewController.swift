@@ -28,57 +28,52 @@ class TodoeyViewController: SwipleTableViewController{
         let action=UIAlertAction(title: "Add Item", style: .default) { (action) in
             if let currentCategory=self.selectedCategory{
                 if textField.text != "" {
-                do {
-                    try self.realm.write{
-                        let newItem=Item()
-                        newItem.title=textField.text!
-                        newItem.dateCreated=Date()
-                        currentCategory.items.append(newItem)
+                    do {
+                        try self.realm.write{
+                            let newItem=Item()
+                            newItem.title=textField.text!
+                            newItem.dateCreated=Date()
+                            currentCategory.items.append(newItem)
+                        }
+                    } catch {
+                        print("error Saving new data \(error)")
                     }
-                } catch{
-                    print("error Saving new data \(error)")
-                }
-                }else{
+                } else {
                     let alert = UIAlertController(title: "Empty Field", message: "Please Enter details", preferredStyle: .alert)
                     let action = UIAlertAction(title: "Retry", style: .default, handler: nil)
                     alert.addAction(action)
                     self.present(alert, animated: true, completion: nil)
                 }
-        }
+            }
             self.tableView.reloadData()
         }
-        
-        
-        
         alert.addAction(action)
         alert.addTextField { (alertTextField) in
             alertTextField.placeholder="Enter new Alert"
             textField=alertTextField
         }
         present(alert, animated: true, completion: nil)
-        
-        
     }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return itemArray?.count ?? 1
-        
     }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       
+        
         let cell=super.tableView(tableView, cellForRowAt: indexPath)
-        if let item=itemArray?[indexPath.row]{
+        if let item=itemArray?[indexPath.row] {
             
             cell.textLabel?.text=item.title
             cell.accessoryType = item.done ? .checkmark : .none
         }
         else {
-           
             cell.textLabel?.text="No items Found"
         }
         return cell
-        
     }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let item=itemArray?[indexPath.row]{
             do{
@@ -93,40 +88,42 @@ class TodoeyViewController: SwipleTableViewController{
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func loadItems(){
+    func loadItems() {
         itemArray=selectedCategory?.items.sorted(byKeyPath: "title",ascending: true)
         tableView.reloadData()
     }
-    override func updateModel(at indexPath:IndexPath){
-        if let item=self.selectedCategory?.items[indexPath.row]{
-            do{
+    
+    override func updateModel(at indexPath:IndexPath) {
+        if let item=self.selectedCategory?.items[indexPath.row] {
+            do {
                 try self.realm.write{
                     self.realm.delete(item)
                 }
                 
-            }catch{
+            } catch {
                 print("Error Deleting Cell")
             }
-            
         }
     }
 }
 
 //MARK: - Search View Delegate
 
-extension TodoeyViewController: UISearchBarDelegate{
+extension TodoeyViewController: UISearchBarDelegate {
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         itemArray=itemArray?.filter("title CONTAINS[cd] %a",searchBar.text!).sorted(byKeyPath: "dateCreated",ascending: true)
         tableView.reloadData()
     }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchBar.text?.count==0{
+        if searchBar.text?.count==0 {
             loadItems()
             DispatchQueue.main.async {
                 searchBar.resignFirstResponder()
             }
         }
-        else{
+        else {
             
             itemArray=itemArray?.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "dateCreated",ascending: true)
             
